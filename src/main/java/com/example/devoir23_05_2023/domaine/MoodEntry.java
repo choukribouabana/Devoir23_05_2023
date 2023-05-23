@@ -7,16 +7,16 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Entity
-@Table(name="moodEntry")
+@Table(name="moodentry")
 public class MoodEntry {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(
-            name="moodEntry_user",
-            joinColumns = @JoinColumn(name = "moodEntry_id"),
+            name="moodentry_utilisateur",
+            joinColumns = @JoinColumn(name = "moodentry_id"),
             inverseJoinColumns = @JoinColumn(name = "utilisateur_id")
     )
     private List<User> users;
